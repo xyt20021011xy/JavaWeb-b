@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.Mapper.FormMapper">
+
+    <select id="page" parameterType="com.example.demo.O.foto.DTO.UserDTO" resultType="com.example.demo.O.foto.VO.UserVO">
+
+        select * from form
+        <where>
+            <if test="name != null">
+                and name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="username != null">
+                and username LIKE CONCAT('%', #{username}, '%')
+            </if>
+
+        </where>
+    </select>
+</mapper>

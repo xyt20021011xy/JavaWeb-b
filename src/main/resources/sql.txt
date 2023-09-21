@@ -1,0 +1,11 @@
+-- `form`
+create table if not exists `form`
+(
+`id` int not null auto_increment primary key,
+`name` varchar(20) not null comment '用户名',
+`sex` varchar(4) not null,
+`username` varchar(20) not null comment '用户名',
+`password` varchar(20) not null comment '用户名',
+`phone` varchar(20) not null comment '用户名',
+`time` datetime not null
+) comment '`form`';
