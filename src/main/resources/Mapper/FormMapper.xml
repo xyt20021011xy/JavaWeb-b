@@ -15,4 +15,17 @@
 
         </where>
     </select>
+    <select id="page0" parameterType="com.example.demo.O.foto.DTO.UserDTO" resultType="com.example.demo.O.foto.VO.UserVO">
+
+        select * from user
+        <where>
+            <if test="name != null">
+                and name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="username != null">
+                and username LIKE CONCAT('%', #{username}, '%')
+            </if>
+
+        </where>
+    </select>
 </mapper>

@@ -1,8 +1,7 @@
 package com.example.demo.Service.ServiceImpl;
 
-import com.example.demo.O.Login;
+import com.example.demo.O.foto.entiry.Login;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

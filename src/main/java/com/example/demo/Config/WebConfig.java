@@ -24,6 +24,7 @@ public class WebConfig  implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login")
                 .excludePathPatterns("/form/insert")
+                .excludePathPatterns("/upload")
                 .excludePathPatterns("/404");// 设置需要拦截的路径，例如以/api/开头的所有请求
     }
 

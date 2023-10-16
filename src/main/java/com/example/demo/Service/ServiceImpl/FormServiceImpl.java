@@ -1,6 +1,6 @@
 package com.example.demo.Service.ServiceImpl;
 
-import com.example.demo.O.PageResult;
+import com.example.demo.O.foto.entiry.PageResult;
 import com.example.demo.O.foto.DTO.UserDTO;
 import com.example.demo.O.foto.VO.DateVO;
 import com.example.demo.O.foto.VO.UserVO;
@@ -9,28 +9,39 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class FormServiceImpl implements com.example.demo.Service.FormService{
     @Autowired
     private com.example.demo.Mapper.FormMapper formMapper;
-
+    /**
+     * 参数is:1为学生，0为老师
+     */
+    public static String is(String is){
+        if(is.equals("1")){
+            return "form";
+        }else{
+            return "teacher";
+        }
+    }
     /**
      * 分页查询
      * @param userDTO
      * @return
      */
     @Override
-    public PageResult getForm(UserDTO userDTO) {
+    public PageResult getForm(UserDTO userDTO,String is) {
         PageHelper.startPage(userDTO.getPage(),userDTO.getPageSize());
-        Page<UserVO> page= formMapper.page(userDTO);
+        if(is.equals("1")){
+            Page<UserVO> page= formMapper.page(userDTO);
+            return new PageResult(page.getTotal(),page.getResult());
+        }else {
+            Page<UserVO> page= formMapper.page0(userDTO);
+            return new PageResult(page.getTotal(),page.getResult());
+        }
 
-        return new PageResult(page.getTotal(),page.getResult());
     }
 
     /**
@@ -39,8 +50,8 @@ public class FormServiceImpl implements com.example.demo.Service.FormService{
      */
 
     @Override
-    public void delete(String username) {
-        formMapper.delete(username);
+    public void delete(String username,String is) {
+        formMapper.delete(username,is(is));
     }
 
     /**
@@ -48,9 +59,16 @@ public class FormServiceImpl implements com.example.demo.Service.FormService{
      * @param user
      */
     @Override
-    public String update(User user) {
+    public String update(User user,String is) {
         try {
-            formMapper.update(user);
+            if(is.equals("1")){
+                formMapper.update(user);
+            }
+            else{
+                formMapper.update0(user);
+            }
+
+
         }catch (Exception e){
             e.printStackTrace();
             return "用户名已经存在，请重新输入";
@@ -59,9 +77,13 @@ public class FormServiceImpl implements com.example.demo.Service.FormService{
 
     }
 
-    public String insert(User user) {
+    public String insert(User user,String is) {
         try {
-            formMapper.insert(user);
+            if(is.equals("1"))
+                formMapper.insert(user);
+            else
+                //System.out.println(is(is)
+            formMapper.insert0(user);
         }catch (Exception e){
             e.printStackTrace();
             return "用户名已经存在，请重新输入";
@@ -71,7 +93,7 @@ public class FormServiceImpl implements com.example.demo.Service.FormService{
     }
 
     @Override
-    public List<DateVO> get() {
+    public List<DateVO> get(String is) {
         return formMapper.get();
     }
 

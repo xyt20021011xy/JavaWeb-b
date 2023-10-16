@@ -1,4 +1,4 @@
-package com.example.demo.O;
+package com.example.demo.O.foto.entiry;
 
 import lombok.Data;
 
