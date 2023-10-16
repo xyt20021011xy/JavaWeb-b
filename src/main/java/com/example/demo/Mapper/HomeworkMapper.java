@@ -2,6 +2,7 @@ package com.example.demo.Mapper;
 
 import com.example.demo.O.foto.DTO.HandDTO;
 import com.example.demo.O.foto.DTO.HomeworkDTO;
+import com.example.demo.O.foto.VO.HandVO;
 import com.example.demo.O.foto.entiry.Homework;
 import lombok.Data;
 import org.apache.ibatis.annotations.Delete;
@@ -23,4 +24,6 @@ public interface HomeworkMapper {
     void delete(int id);
     @Insert("insert into `workstu`(homeid,username,content) values(#{homeid},#{username},#{content})")
     void hand(HandDTO handDTO);
+    @Select("select * from `workstu` where homeid=#{homeid}")
+    List<HandVO> getHand(String homeid);
 }

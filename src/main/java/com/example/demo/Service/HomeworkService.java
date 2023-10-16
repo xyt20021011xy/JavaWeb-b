@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 import com.example.demo.O.foto.DTO.HandDTO;
 import com.example.demo.O.foto.DTO.HomeworkDTO;
+import com.example.demo.O.foto.VO.HandVO;
 import com.example.demo.O.foto.entiry.Homework;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +17,6 @@ public interface HomeworkService {
     void delete(int id);
 
     void hand(HandDTO handDTO);
+
+    List<HandVO> getHand(String homeid);
 }

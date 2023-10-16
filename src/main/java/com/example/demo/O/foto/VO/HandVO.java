@@ -1,4 +1,4 @@
-package com.example.demo.O.foto.DTO;
+package com.example.demo.O.foto.VO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HandDTO {
-    private String homeid;
+public class HandVO {
+    private int homeid;
     private String username;
     private String content;
 }

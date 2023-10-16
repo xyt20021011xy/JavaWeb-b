@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Homework {
+    private int id;
     private String teacher;
     private String details;
     private LocalDate starttime;
