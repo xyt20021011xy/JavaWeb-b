@@ -1,11 +1,78 @@
--- `form`
-create table if not exists `form`
+create table ` homework`
 (
-`id` int not null auto_increment primary key,
-`name` varchar(20) not null comment '用户名',
-`sex` varchar(4) not null,
-`username` varchar(20) not null comment '用户名',
-`password` varchar(20) not null comment '用户名',
-`phone` varchar(20) not null comment '用户名',
-`time` datetime not null
-) comment '`form`';
+    id          int auto_increment
+        primary key,
+    teacher     varchar(20)  not null,
+    details     varchar(100) null,
+    starttime   date         not null,
+    endtime     date         not null,
+    studentlist varchar(200) null
+);
+
+create table dailyactivity
+(
+    id         int auto_increment
+        primary key,
+    dailycount int  not null,
+    date       date not null
+)
+    comment '日活量';
+
+create table form
+(
+    id       int auto_increment
+        primary key,
+    name     varchar(20) not null,
+    sex      varchar(4)  null,
+    username varchar(20) null,
+    password varchar(20) null,
+    phone    varchar(20) null,
+    time     date        null,
+    constraint form_username_uindex
+        unique (username)
+);
+
+create table top
+(
+    id    int auto_increment
+        primary key,
+    count int         not null,
+    date  date        not null,
+    name  varchar(20) not null
+);
+
+create table use_data
+(
+    id       int auto_increment
+        primary key,
+    username varchar(20)   not null,
+    name     varchar(20)   null,
+    count    int default 0 not null,
+    date     date          null
+);
+
+create table user
+(
+    id       int auto_increment
+        primary key,
+    name     varchar(20) not null,
+    sex      varchar(20) not null,
+    username varchar(20) null,
+    password varchar(20) null,
+    phone    varchar(20) null,
+    time     date        null,
+    constraint user_id_uindex
+        unique (id),
+    constraint user_username_uindex
+        unique (username)
+);
+
+create table workstu
+(
+    id       int auto_increment
+        primary key,
+    homeid   varchar(20) not null,
+    username varchar(20) not null,
+    content  varchar(20) null
+);
+
