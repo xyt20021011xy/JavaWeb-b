@@ -9,6 +9,20 @@ create table ` homework`
     studentlist varchar(200) null
 );
 
+create table courses
+(
+    courseno       varchar(12)  not null comment '课程编号'
+        primary key,
+    coursename     varchar(255) null comment '课程名称',
+    credit         int          null comment '学分',
+    credithour     int          null comment '学时',
+    coursetype     int          null comment '课程类型：1必修，2选修',
+    experimenttype int          null comment '实验方式：1单开实验，2课内实验',
+    description    varchar(255) null
+)
+    collate = utf8mb4_general_ci
+    row_format = DYNAMIC;
+
 create table dailyactivity
 (
     id         int auto_increment
@@ -17,6 +31,20 @@ create table dailyactivity
     date       date not null
 )
     comment '日活量';
+
+create table experimentitems
+(
+    itemno       varchar(12)  not null comment '实验项目编号，由课程代码后10位+2位课程内序号组成'
+        primary key,
+    itemname     varchar(255) null comment '实验项目名称',
+    courseno     varchar(255) null comment '课程编号',
+    itemhour     int          null comment '实验学时',
+    itemcontent  varchar(255) null comment '实验内容',
+    itemtype     int          null comment '实验类型：1演示、2验证、3综合、4设计研究',
+    iscompulsory int          null comment '是否必做：1必做，0选做'
+)
+    collate = utf8mb4_general_ci
+    row_format = DYNAMIC;
 
 create table form
 (
