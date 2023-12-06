@@ -26,13 +26,13 @@ public class DataController {
         System.out.println(name.getName());
         dataService.top(name.getName());
     }
-    @GetMapping("/topday")
-    public List<String> topday(){
-        return dataService.topday();
-    }
-    @GetMapping("/topmonth")
-    public List<String> topmonth(){
-        return dataService.topmonth();
-    }
+//    @GetMapping("/topday")
+//    public List<String> topday(){
+//        return dataService.topday();
+//    }
+//    @GetMapping("/topmonth")
+//    public List<String> topmonth(){
+//        return dataService.topmonth();
+//    }
 
 }

@@ -22,6 +22,7 @@ public class LoginServiceImpl implements com.example.demo.Service.LoginService{
         if(login.getPassword().equals(password)){
             Map<String, Object> claims = new HashMap<>();
             claims.put("username", login.getUsername());
+            System.out.println("登陆成功");
             return com.example.demo.Util.JwtToken.createJWT(claims);
         }
 
